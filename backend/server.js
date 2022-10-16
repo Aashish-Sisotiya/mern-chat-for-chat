@@ -23,7 +23,7 @@ const app = express();
 
 app.use(express.json());  // to accept json data
 app.use(cors({
-    origin: "https://mern-chat-for-chat.netlify.app/"
+    origin: "*"
 }))
 
 // app.use(createProxyMiddleware);
