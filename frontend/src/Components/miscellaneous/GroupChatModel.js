@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, useToast } from '@chakra-ui/react'
 import axios from 'axios';
 import React, { useState } from 'react'
+import { API_URL } from '../../constants';
 import { ChatState } from '../../context/chatProvider';
 import UserBadgeItem from '../Avatar/UserBadgeItem';
 import UserListItem from '../Avatar/UserListItem';
@@ -31,7 +32,7 @@ const GroupChatModel = ({ children }) => {
                 },
             };
 
-            const { data } = await axios.get(`/api/user?search=${search}`, config);
+            const { data } = await axios.get(`${API_URL}api/user?search=${search}`, config);
             // console.log(data);
             setLoading(false);
             setSearchResult(data);
@@ -64,8 +65,7 @@ const GroupChatModel = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post(
-                `/api/chat/group`,
+            const { data } = await axios.post(`${API_URL}api/chat/group`,
                 {
                     name: groupChatName,
                     users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -93,7 +93,7 @@ const GroupChatModel = ({ children }) => {
         }
     };
 
-    const  handleGroup = (userToAdd) => {
+    const handleGroup = (userToAdd) => {
         if (selectedUsers.includes(userToAdd)) {
             toast({
                 title: "user already added",

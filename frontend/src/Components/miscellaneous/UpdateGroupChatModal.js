@@ -5,6 +5,7 @@ import { ChatState } from '../../context/chatProvider'
 import UserBadgeItem from '../Avatar/UserBadgeItem'
 import axios from "axios"
 import UserListItem from "../Avatar/UserListItem"
+import { API_URL } from '../../constants'
 
 const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
 
@@ -40,7 +41,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 },
             };
 
-            const { data } = await axios.put("/api/chat/groupRemove", {
+            const { data } = await axios.put(`${API_URL}api/chat/groupRemove`, {
                 chatId: selectedChat._id,
                 userId: user1._id,
             }, config);
@@ -75,7 +76,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put("/api/chat/rename", {
+            const { data } = await axios.put(`${API_URL}api/chat/rename`, {
                 chatId: selectedChat._id,
                 chatName: groupChatName
             }, config);
@@ -110,7 +111,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 },
             };
 
-            const { data } = await axios.get(`/api/user?search=${search}`, config);
+            const { data } = await axios.get(`${API_URL}api/user?search=${search}`, config);
 
             // console.log(data);
             setLoading(false);
@@ -156,7 +157,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
                 },
             };
 
-            const { data } = await axios.put("/api/chat/groupadd", {
+            const { data } = await axios.put(`${API_URL}api/chat/groupadd`, {
                 chatId: selectedChat._id,
                 userId: user1._id,
             }, config);

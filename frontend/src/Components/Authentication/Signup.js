@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { API_URL } from '../../constants';
 
 
 const Signup = () => {
@@ -98,7 +99,7 @@ const Signup = () => {
                 },
             };
 
-            const { data } = await axios.post("/api/user", { name, email, password, pic }, config);
+            const { data } = await axios.post(`${API_URL}api/user`, { name, email, password, pic }, config);
             toast({
                 title: 'Registration successful',
                 status: 'success',

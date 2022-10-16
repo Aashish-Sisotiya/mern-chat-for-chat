@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useToast } from '@chakra-ui/react'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { API_URL } from '../../constants';
 
 
 const Login = () => {
@@ -43,7 +44,7 @@ const Login = () => {
                 },
             };
 
-            const { data } = await axios.post("/api/user/login", { email, password }, config);
+            const { data } = await axios.post(`${API_URL}api/user/login`, { email, password }, config);
             toast({
                 title: 'login successful',
                 status: 'success',
