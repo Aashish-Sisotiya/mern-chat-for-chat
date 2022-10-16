@@ -20,7 +20,7 @@ const Login = () => {
     const handleClick = () => {
         setShow(!show);
     }
-   
+
 
 
     const submitHandler = async () => {
@@ -41,6 +41,7 @@ const Login = () => {
             const config = {
                 headers: {
                     "content-type": "application/json",
+                    "Access- Control - Allow - Origin": "*"
                 },
             };
 
@@ -54,7 +55,7 @@ const Login = () => {
             });
 
             localStorage.setItem("userInfo", JSON.stringify(data));
- 
+
 
             setLoading(false);
 
