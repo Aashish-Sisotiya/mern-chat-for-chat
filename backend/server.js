@@ -8,7 +8,8 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./Middlewares/errorMiddleware");
 const { create } = require("./Models/userModel");
- 
+var cors = require('cors')
+
 
 const path = require("path");
 
@@ -21,7 +22,10 @@ connectDB();
 const app = express();
 
 app.use(express.json());  // to accept json data
- 
+app.use(cors({
+    origin: "https://mern-chat-for-chat.netlify.app/"
+}))
+
 // app.use(createProxyMiddleware);
 
 
