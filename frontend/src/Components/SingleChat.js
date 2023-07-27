@@ -9,7 +9,8 @@ import axios from 'axios';
 import "./style.css";
 import ScrollableChat from './ScrollableChat';
 import io from "socket.io-client";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import animationData from "../animations/typing.json"
 import { API_URL } from '../constants';
 
@@ -18,7 +19,7 @@ import { API_URL } from '../constants';
 
 
 
-const ENDPOINT = "https://mern-chat-for-chat.herokuapp.com/";
+const ENDPOINT = "https://chat-app-backend-3zp4.onrender.com/";
 var socket, selectedChatCompare;
 
 
@@ -163,9 +164,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         loop: true,
         autoplay: true,
         animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice"
-        }
+        // rendererSettings: {
+        //     preserveAspectRatio: "xMidYMid slice"
+        // }
     };
 
 
@@ -238,12 +239,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         }
                         <FormControl onKeyDown={sendMessage} isRequired mt={3}>
                             {isTyping ?
-                                <Lottie
-                                    options={defaultOptions}
-                                    width={60}
-                                    height={30}
-                                    style={{ marginBottom: 10, marginLeft: 0 }}
-                                />
+                                <Lottie animationData={animationData} loop={true} />
                                 : <> </>}
                             <Input
                                 variant="filled"

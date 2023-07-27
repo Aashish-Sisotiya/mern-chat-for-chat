@@ -29,9 +29,9 @@ app.use(cors({
 // app.use(createProxyMiddleware);
 
 
-// app.get("/", (req, res) => {    //take a callback as a parameter
-//     res.send("Api  is running succesfully");
-// });
+app.get("/", (req, res) => {    //take a callback as a parameter
+    res.send("Api  is running succesfully");
+});
 
 
 
@@ -43,13 +43,13 @@ app.use("/api/message", messageRoutes);
 // ------------------------------->> Deployment <<-------------------
 
 
-const __dirname1 = path.resolve();
+// const __dirname1 = path.resolve();
 
-if (process.env.NODE_ENV === "production") {
-    app.get("/", (req, res) => {    //take a callback as a parameter
-        res.send("Api  is running succesfully");
-    });
-}
+// if (process.env.NODE_ENV === "production") {
+//     app.get("/", (req, res) => {    //take a callback as a parameter
+//         res.send("Api  is running succesfully");
+//     });
+// }
 
 
 
